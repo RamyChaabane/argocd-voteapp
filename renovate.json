@@ -2,22 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
 
-  "regexManagers": [
-    {
-      "fileMatch": ["kustomize/dev/kustomization.yaml"],
-      "matchStrings": [
-        "name:\\s*(?<depName>\\S+)\\s*\\n\\s*newName:\\s*\\S+\\s*\\n\\s*newTag:\\s*(?<currentValue>\\S+)"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    }
-  ],
-
   "packageRules": [
     {
+      "managers": ["kustomize"],
       "matchDatasources": ["docker"],
+      "matchPackageNames": ["ramydockerid/**"],
       "matchFileNames": ["kustomize/dev/**"],
-      "addLabels": ["env:dev"]
-    },
-  ]
+      "addLabels": ["env:dev"],
+      "enabled": true,
+      "extractVersion": "newTag",
+      "depTypeList": ["runtime"],
+    }
+  ],
+  "kustomize": {
+    "fileMatch": ["kustomization.yaml", "kustomization.yml"],
+  }
 }
