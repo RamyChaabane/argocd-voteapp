@@ -6,8 +6,11 @@
     {
       "managers": ["kustomize"],
       "matchDatasources": ["docker"],
-      "matchPackageNames": ["ramydockerid/**"],
-      "matchFileNames": ["kustomize/dev/**"],
+      "matchPackageNames": [
+      "ramydockerid/vote-backend",
+      "ramydockerid/vote-frontend"
+    ],
+      "matchFileNames": ["k8s/overlays/dev/kustomization.yaml"],
       "addLabels": ["env:dev"],
       "enabled": true,
       "extractVersion": "newTag",
