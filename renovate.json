@@ -4,56 +4,9 @@
 
   "regexManagers": [
     {
-      "fileMatch": ["^kustomize/dev/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*ramydockerid/vote-backend\\s*\\n\\s*newTag:\\s*(?<currentValue>.*)"
-      ],
-      "depNameTemplate": "ramydockerid/vote-backend-dev",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^kustomize/dev/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*ramydockerid/vote-frontend\\s*\\n\\s*newTag:\\s*(?<currentValue>.*)"
-      ],
-      "depNameTemplate": "ramydockerid/vote-frontend-dev",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^kustomize/staging/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*ramydockerid/vote-backend\\s*\\n\\s*newTag:\\s*(?<currentValue>.*)"
-      ],
-      "depNameTemplate": "ramydockerid/vote-backend-staging",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^kustomize/staging/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*ramydockerid/vote-frontend\\s*\\n\\s*newTag:\\s*(?<currentValue>.*)"
-      ],
-      "depNameTemplate": "ramydockerid/vote-frontend-staging",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^kustomize/prod/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*ramydockerid/vote-backend\\s*\\n\\s*newTag:\\s*(?<currentValue>.*)"
-      ],
-      "depNameTemplate": "ramydockerid/vote-backend-prod",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    },
-    {
-      "fileMatch": ["^kustomize/prod/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*ramydockerid/vote-frontend\\s*\\n\\s*newTag:\\s*(?<currentValue>.*)"
-      ],
-      "depNameTemplate": "ramydockerid/vote-frontend-prod",
+      "fileMatch": ["kustomize/dev/kustomization.yaml"],
+      "matchStrings": ["newTag:\\s*(?<currentValue>.*)"],
+      "depNameTemplate": "vote-backend-dev",
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
     }
@@ -61,28 +14,8 @@
 
   "packageRules": [
     {
-      "matchPackageNames": ["ramydockerid/vote-backend-dev"],
+      "matchPackageNames": ["vote-backend-dev"],
       "labels": ["env:dev", "service:backend"]
-    },
-    {
-      "matchPackageNames": ["ramydockerid/vote-frontend-dev"],
-      "labels": ["env:dev", "service:frontend"]
-    },
-    {
-      "matchPackageNames": ["ramydockerid/vote-backend-staging"],
-      "labels": ["env:staging", "service:backend"]
-    },
-    {
-      "matchPackageNames": ["ramydockerid/vote-frontend-staging"],
-      "labels": ["env:staging", "service:frontend"]
-    },
-    {
-      "matchPackageNames": ["ramydockerid/vote-backend-prod"],
-      "labels": ["env:prod", "service:backend"]
-    },
-    {
-      "matchPackageNames": ["ramydockerid/vote-frontend-prod"],
-      "labels": ["env:prod", "service:frontend"]
     }
   ]
 }
