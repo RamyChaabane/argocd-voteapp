@@ -1,60 +1,66 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "config:base"
-  ],
-  "packageRules": [
+  "extends": ["config:recommended"],
+  "customManagers": [
     {
-      "managers": ["kustomize"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ramydockerid/vote-backend"],
-      "matchPaths": ["kustomize/dev/**"],
-      "labels": ["env:dev", "service:backend"],
-      "separateMinorPatch": true
+      "description": "Kustomize DEV Backend",
+      "fileMatch": ["kustomize/dev/kustomization.yaml"],
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "ramydockerid/vote-backend",
+      "versioningTemplate": "docker",
+      "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
+      "depNameTemplate": "ramydockerid/vote-backend",
+      "labels": ["env:dev", "service:backend"]
     },
     {
-      "managers": ["kustomize"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ramydockerid/vote-frontend"],
-      "matchPaths": ["kustomize/dev/**"],
-      "labels": ["env:dev", "service:frontend"],
-      "separateMinorPatch": true
+      "description": "Kustomize DEV Frontend",
+      "fileMatch": ["kustomize/dev/kustomization.yaml"],
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "ramydockerid/vote-frontend",
+      "versioningTemplate": "docker",
+      "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
+      "depNameTemplate": "ramydockerid/vote-frontend",
+      "labels": ["env:dev", "service:frontend"]
     },
     {
-      "managers": ["kustomize"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ramydockerid/vote-backend"],
-      "matchPaths": ["kustomize/staging/**"],
-      "labels": ["env:staging", "service:backend"],
-      "separateMinorPatch": true
+      "description": "Kustomize STAGING Backend",
+      "fileMatch": ["kustomize/staging/kustomization.yaml"],
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "ramydockerid/vote-backend",
+      "versioningTemplate": "docker",
+      "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
+      "depNameTemplate": "ramydockerid/vote-backend",
+      "labels": ["env:staging", "service:backend"]
     },
     {
-      "managers": ["kustomize"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ramydockerid/vote-frontend"],
-      "matchPaths": ["kustomize/staging/**"],
-      "labels": ["env:staging", "service:frontend"],
-      "separateMinorPatch": true
+      "description": "Kustomize STAGING Frontend",
+      "fileMatch": ["kustomize/staging/kustomization.yaml"],
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "ramydockerid/vote-frontend",
+      "versioningTemplate": "docker",
+      "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
+      "depNameTemplate": "ramydockerid/vote-frontend",
+      "labels": ["env:staging", "service:frontend"]
     },
     {
-      "managers": ["kustomize"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ramydockerid/vote-backend"],
-      "matchPaths": ["kustomize/prod/**"],
-      "labels": ["env:prod", "service:backend"],
-      "separateMinorPatch": true
+      "description": "Kustomize PROD Backend",
+      "fileMatch": ["kustomize/prod/kustomization.yaml"],
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "ramydockerid/vote-backend",
+      "versioningTemplate": "docker",
+      "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
+      "depNameTemplate": "ramydockerid/vote-backend",
+      "labels": ["env:prod", "service:backend"]
     },
     {
-      "managers": ["kustomize"],
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["ramydockerid/vote-frontend"],
-      "matchPaths": ["kustomize/prod/**"],
-      "labels": ["env:prod", "service:frontend"],
-      "separateMinorPatch": true
+      "description": "Kustomize PROD Frontend",
+      "fileMatch": ["kustomize/prod/kustomization.yaml"],
+      "datasourceTemplate": "docker",
+      "packageNameTemplate": "ramydockerid/vote-frontend",
+      "versioningTemplate": "docker",
+      "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
+      "depNameTemplate": "ramydockerid/vote-frontend",
+      "labels": ["env:prod", "service:frontend"]
     }
-  ],
-  "kustomize": {
-    "fileMatch": ["kustomization.yaml", "kustomization.yml"]
-  }
+  ]
 }
