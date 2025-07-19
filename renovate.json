@@ -5,7 +5,9 @@
   "regexManagers": [
     {
       "fileMatch": ["kustomize/dev/kustomization.yaml"],
-      "matchStrings": ["newTag:\\s*(?<currentValue>.*)"],
+      "matchStrings": [
+        "name:\\s*(?<depName>\\S+)\\s*\\n\\s*newName:\\s*\\S+\\s*\\n\\s*newTag:\\s*(?<currentValue>\\S+)"
+      ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
     }
@@ -14,12 +16,12 @@
   "packageRules": [
     {
       "matchDatasources": ["docker"],
-      "matchPackageNames": ["docker.io/**/vote-backend**"],
+      "matchPackageNames": ["ramydockerid/vote-backend"],
       "addLabels": ["env:dev", "service:backend"]
     },
     {
       "matchDatasources": ["docker"],
-      "matchPackageNames": ["docker.io/**/vote-frontend**"],
+      "matchPackageNames": ["ramydockerid/vote-frontend"],
       "addLabels": ["env:dev", "service:frontend"]
     }
   ]
