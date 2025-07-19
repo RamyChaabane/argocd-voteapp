@@ -20,7 +20,6 @@
   ],
 
   "kustomize": {
-    "fileMatch": ["kustomization.yaml", "kustomization.yml"],
-    "imageUpdate": true
+    "fileMatch": ["kustomization.yaml", "kustomization.yml"]
   }
 }
