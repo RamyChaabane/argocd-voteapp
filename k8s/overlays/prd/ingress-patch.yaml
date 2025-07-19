@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  tls:
+    - hosts:
+        - voteapp.prd.rch.domain-buy-5.com
+      secretName: voteapp-prd-tls
+  rules:
+    - host: voteapp.prd.rch.domain-buy-5.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 8881
