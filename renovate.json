@@ -11,23 +11,34 @@
       "matchStrings": [
         "newName:\\s*(?<depName>ramydockerid/vote-[^\\s]+)[\\s\\S]*?newTag:\\s*(?<currentValue>[\\w.\\-]+)"
       ],
-      "datasourceTemplate": "docker",
-      "labels": ["env:dev"]
+      "datasourceTemplate": "docker"
     },
     {
       "fileMatch": ["kustomize/staging/kustomization\\.ya?ml$"],
       "matchStrings": [
         "newName:\\s*(?<depName>ramydockerid/vote-[^\\s]+)[\\s\\S]*?newTag:\\s*(?<currentValue>[\\w.\\-]+)"
       ],
-      "datasourceTemplate": "docker",
-      "labels": ["env:staging"]
+      "datasourceTemplate": "docker"
     },
     {
       "fileMatch": ["kustomize/prod/kustomization\\.ya?ml$"],
       "matchStrings": [
         "newName:\\s*(?<depName>ramydockerid/vote-[^\\s]+)[\\s\\S]*?newTag:\\s*(?<currentValue>[\\w.\\-]+)"
       ],
-      "datasourceTemplate": "docker",
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPaths": ["kustomize/dev/.*"],
+      "labels": ["env:dev"]
+    },
+    {
+      "matchPaths": ["kustomize/staging/.*"],
+      "labels": ["env:staging"]
+    },
+    {
+      "matchPaths": ["kustomize/prod/.*"],
       "labels": ["env:prod"]
     }
   ]
