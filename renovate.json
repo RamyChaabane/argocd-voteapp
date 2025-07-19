@@ -4,31 +4,18 @@
     "config:recommended",
     "config:base"
   ],
-  "enabledManagers": ["regex"],
-  "regexManagers": [
-    {
-      "fileMatch": ["kustomize/dev/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*(?<depName>ramydockerid/vote-[^\\s]+)[\\s\\S]*?newTag:\\s*(?<currentValue>[\\w.\\-]+)"
-      ],
-      "datasourceTemplate": "docker"
-    },
-    {
-      "fileMatch": ["kustomize/staging/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*(?<depName>ramydockerid/vote-[^\\s]+)[\\s\\S]*?newTag:\\s*(?<currentValue>[\\w.\\-]+)"
-      ],
-      "datasourceTemplate": "docker"
-    },
-    {
-      "fileMatch": ["kustomize/prod/kustomization\\.ya?ml$"],
-      "matchStrings": [
-        "newName:\\s*(?<depName>ramydockerid/vote-[^\\s]+)[\\s\\S]*?newTag:\\s*(?<currentValue>[\\w.\\-]+)"
-      ],
-      "datasourceTemplate": "docker"
-    }
-  ],
   "packageRules": [
+    {
+      "managers": ["kustomize"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "ramydockerid/vote-backend",
+        "ramydockerid/vote-frontend"
+      ],
+      "enabled": true,
+      "extractVersion": "newTag",
+      "depTypeList": ["runtime"]
+    },
     {
       "matchPaths": ["kustomize/dev/.*"],
       "labels": ["env:dev"]
@@ -41,5 +28,9 @@
       "matchPaths": ["kustomize/prod/.*"],
       "labels": ["env:prod"]
     }
-  ]
+  ],
+
+  "kustomize": {
+    "fileMatch": ["kustomization.yaml", "kustomization.yml"]
+  }
 }
