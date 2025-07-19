@@ -2,20 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
 
-  "regexManagers": [
-    {
-      "fileMatch": ["kustomize/dev/kustomization.yaml"],
-      "matchStrings": ["newTag:\\s*(?<currentValue>.*)"],
-      "depNameTemplate": "vote-backend-dev",
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    }
-  ],
 
-  "packageRules": [
-    {
-      "matchPackageNames": ["vote-backend-dev"],
-      "labels": ["env:dev", "service:backend"]
-    }
-  ]
+  "managerFilePatterns": [
+    "/(^|/)kustomization\\.ya?ml$/"
+  ],
+  "pinDigests": false,
 }
