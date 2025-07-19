@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+
   "customManagers": [
     {
       "description": "Kustomize DEV Backend",
@@ -9,8 +10,7 @@
       "packageNameTemplate": "ramydockerid/vote-backend",
       "versioningTemplate": "docker",
       "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
-      "depNameTemplate": "ramydockerid/vote-backend",
-      "labels": ["env:dev", "service:backend"]
+      "depNameTemplate": "ramydockerid/vote-backend"
     },
     {
       "description": "Kustomize DEV Frontend",
@@ -19,8 +19,7 @@
       "packageNameTemplate": "ramydockerid/vote-frontend",
       "versioningTemplate": "docker",
       "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
-      "depNameTemplate": "ramydockerid/vote-frontend",
-      "labels": ["env:dev", "service:frontend"]
+      "depNameTemplate": "ramydockerid/vote-frontend"
     },
     {
       "description": "Kustomize STAGING Backend",
@@ -29,8 +28,7 @@
       "packageNameTemplate": "ramydockerid/vote-backend",
       "versioningTemplate": "docker",
       "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
-      "depNameTemplate": "ramydockerid/vote-backend",
-      "labels": ["env:staging", "service:backend"]
+      "depNameTemplate": "ramydockerid/vote-backend"
     },
     {
       "description": "Kustomize STAGING Frontend",
@@ -39,8 +37,7 @@
       "packageNameTemplate": "ramydockerid/vote-frontend",
       "versioningTemplate": "docker",
       "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
-      "depNameTemplate": "ramydockerid/vote-frontend",
-      "labels": ["env:staging", "service:frontend"]
+      "depNameTemplate": "ramydockerid/vote-frontend"
     },
     {
       "description": "Kustomize PROD Backend",
@@ -49,8 +46,7 @@
       "packageNameTemplate": "ramydockerid/vote-backend",
       "versioningTemplate": "docker",
       "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
-      "depNameTemplate": "ramydockerid/vote-backend",
-      "labels": ["env:prod", "service:backend"]
+      "depNameTemplate": "ramydockerid/vote-backend"
     },
     {
       "description": "Kustomize PROD Frontend",
@@ -59,7 +55,39 @@
       "packageNameTemplate": "ramydockerid/vote-frontend",
       "versioningTemplate": "docker",
       "extractVersionTemplate": "^(?:\\s*newTag:\\s*)(?<currentValue>.*)$",
-      "depNameTemplate": "ramydockerid/vote-frontend",
+      "depNameTemplate": "ramydockerid/vote-frontend"
+    }
+  ],
+
+  "packageRules": [
+    {
+      "matchPackageNames": ["ramydockerid/vote-backend"],
+      "matchPaths": ["kustomize/dev/kustomization.yaml"],
+      "labels": ["env:dev", "service:backend"]
+    },
+    {
+      "matchPackageNames": ["ramydockerid/vote-frontend"],
+      "matchPaths": ["kustomize/dev/kustomization.yaml"],
+      "labels": ["env:dev", "service:frontend"]
+    },
+    {
+      "matchPackageNames": ["ramydockerid/vote-backend"],
+      "matchPaths": ["kustomize/staging/kustomization.yaml"],
+      "labels": ["env:staging", "service:backend"]
+    },
+    {
+      "matchPackageNames": ["ramydockerid/vote-frontend"],
+      "matchPaths": ["kustomize/staging/kustomization.yaml"],
+      "labels": ["env:staging", "service:frontend"]
+    },
+    {
+      "matchPackageNames": ["ramydockerid/vote-backend"],
+      "matchPaths": ["kustomize/prod/kustomization.yaml"],
+      "labels": ["env:prod", "service:backend"]
+    },
+    {
+      "matchPackageNames": ["ramydockerid/vote-frontend"],
+      "matchPaths": ["kustomize/prod/kustomization.yaml"],
       "labels": ["env:prod", "service:frontend"]
     }
   ]
