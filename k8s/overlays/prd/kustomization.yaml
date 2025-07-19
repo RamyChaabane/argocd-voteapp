@@ -14,7 +14,7 @@ images:
     newTag: 2024.07.19.1
   - name: frontend-image
     newName: ramydockerid/vote-frontend
-    newTag: 2024.07.19.1
+    newTag: 2025.07.19.87
 
 patches:
   - path: backend-replicas-patch.yaml
