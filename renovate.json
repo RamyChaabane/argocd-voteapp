@@ -8,28 +8,52 @@
     {
       "managers": ["kustomize"],
       "matchDatasources": ["docker"],
-      "matchPackageNames": [
-        "ramydockerid/vote-backend",
-        "ramydockerid/vote-frontend"
-      ],
-      "enabled": true,
-      "extractVersion": "newTag",
-      "depTypeList": ["runtime"]
+      "matchPackageNames": ["ramydockerid/vote-backend"],
+      "matchPaths": ["kustomize/dev/**"],
+      "labels": ["env:dev", "service:backend"],
+      "separateMinorPatch": true
     },
     {
-      "matchPaths": ["kustomize/dev/.*"],
-      "labels": ["env:dev"]
+      "managers": ["kustomize"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ramydockerid/vote-frontend"],
+      "matchPaths": ["kustomize/dev/**"],
+      "labels": ["env:dev", "service:frontend"],
+      "separateMinorPatch": true
     },
     {
-      "matchPaths": ["kustomize/staging/.*"],
-      "labels": ["env:staging"]
+      "managers": ["kustomize"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ramydockerid/vote-backend"],
+      "matchPaths": ["kustomize/staging/**"],
+      "labels": ["env:staging", "service:backend"],
+      "separateMinorPatch": true
     },
     {
-      "matchPaths": ["kustomize/prod/.*"],
-      "labels": ["env:prod"]
+      "managers": ["kustomize"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ramydockerid/vote-frontend"],
+      "matchPaths": ["kustomize/staging/**"],
+      "labels": ["env:staging", "service:frontend"],
+      "separateMinorPatch": true
+    },
+    {
+      "managers": ["kustomize"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ramydockerid/vote-backend"],
+      "matchPaths": ["kustomize/prod/**"],
+      "labels": ["env:prod", "service:backend"],
+      "separateMinorPatch": true
+    },
+    {
+      "managers": ["kustomize"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ramydockerid/vote-frontend"],
+      "matchPaths": ["kustomize/prod/**"],
+      "labels": ["env:prod", "service:frontend"],
+      "separateMinorPatch": true
     }
   ],
-
   "kustomize": {
     "fileMatch": ["kustomization.yaml", "kustomization.yml"]
   }
