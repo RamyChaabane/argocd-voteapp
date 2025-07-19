@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "config:base"
+  ],
+
+  "packageRules": [
+    {
+      "managers": ["kustomize"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "ramydockerid/vote-backend",
+        "ramydockerid/vote-frontend"
+      ],
+      "enabled": true,
+      "extractVersion": "newTag",
+      "depTypeList": ["runtime"]
+    }
+  ],
+
+  "kustomize": {
+    "fileMatch": ["kustomization.yaml", "kustomization.yml"],
+    "imageUpdate": true
+  }
+}
