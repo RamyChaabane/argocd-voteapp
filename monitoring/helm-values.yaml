@@ -1,0 +1,15 @@
+crds:
+  enabled: true
+
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - grafana.voteapp.rch.domain-buy-5.com
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    tls:
+      - hosts:
+          - grafana.voteapp.rch.domain-buy-5.com
+        secretName: grafana-tls

@@ -1,0 +1,13 @@
+---
+# k8s/base/frontend/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 8881
+      targetPort: 80
