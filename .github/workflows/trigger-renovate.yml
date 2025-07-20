@@ -35,7 +35,7 @@ jobs:
           echo "Looking for Renovate PR targeting 'dev' branch..."
           
           for i in {1..60}; do
-            gh pr list --repo https://github.com/"$REPO" --label "env::dev" | grep "chore(deps): update"
+            PR_EXISTS=$(gh pr list --repo https://github.com/"$REPO" --label "env::dev" | grep "chore(deps): update")
             if [ $? -eq 0 ]; then
               echo "No merged PR yet. Retrying in 5 seconds..."
               sleep 5
