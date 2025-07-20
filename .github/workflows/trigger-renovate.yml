@@ -39,12 +39,13 @@ jobs:
                 --json number,title \
                 --jq '.[] | select(.title | test("^chore\\(deps\\): update")) | .number')
             
-              if [! -n "$PR_ID" ]; then
+              if [ -n "$PR_ID" ]; then
                 echo "No merged PR yet. Retrying in 5 seconds..."
                 sleep 5
               fi
           
-              echo "Found unmerged Renovate PR: #$PR_ID"
+              echo "Found merged Renovate PR: #$PR_ID"
+              exit 0
           done
 
           echo "Timeout: PR was not merged after waiting."
