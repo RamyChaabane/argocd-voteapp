@@ -47,8 +47,8 @@ jobs:
               echo "Found unmerged Renovate PR: #$PR_ID"
           done
 
-echo "Timeout: PR was not merged after waiting."
-exit 1
+          echo "Timeout: PR was not merged after waiting."
+          exit 1
 
 #  trigger-e2e:
 #    runs-on: ubuntu-latest
