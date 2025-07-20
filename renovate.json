@@ -36,7 +36,9 @@
     {
       "matchFileNames": ["**/overlays/dev/**"],
       "groupName": "vote app dev",
-      "automerge": false
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
     },
     {"matchFileNames": ["**/overlays/prd/**"], "groupName": "vote app prod"},
     {"matchFileNames": ["**/overlays/stg/**"], "groupName": "vote app staging"}
