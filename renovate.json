@@ -6,8 +6,8 @@
     ":rebaseStalePrs",
     ":disableRateLimiting"
   ],
-  "baseBranches": ["main"],
-  "labels": ["renovate","chore"],
+  "baseBranchPatterns": ["main"],
+  "labels": ["renovate", "chore"],
   "packageRules": [
     {
       "matchDatasources": ["docker"],
@@ -19,38 +19,29 @@
       "automerge": false
     },
     {
-      "matchPaths": ["**/dev/**"],
+      "matchFileNames": ["**/dev/**"],
       "additionalBranchPrefix": "dev/",
       "addLabels": ["env::dev"]
     },
     {
-      "matchPaths": ["**/prd/**"],
+      "matchFileNames": ["**/prd/**"],
       "additionalBranchPrefix": "prd/",
       "addLabels": ["env::prod"]
     },
     {
-      "matchPaths": ["**/stg/**"],
+      "matchFileNames": ["**/stg/**"],
       "additionalBranchPrefix": "stg/",
       "addLabels": ["env::staging"]
     },
     {
-      "matchPaths": ["**/overlays/dev/**"],
+      "matchFileNames": ["**/overlays/dev/**"],
       "groupName": "vote app dev",
-      "automerge": false,
-      // "automergeType": "pr",
-      //"platformAutomerge": true,
-      //"gitLabAutomerge": true
+      "automerge": false
     },
-    {
-      "matchPaths": ["**/overlays/prd/**"],
-      "groupName": "vote app prod"
-    },
-    {
-      "matchPaths": ["**/overlays/stg/**"],
-      "groupName": "vote app staging"
-    }
+    {"matchFileNames": ["**/overlays/prd/**"], "groupName": "vote app prod"},
+    {"matchFileNames": ["**/overlays/stg/**"], "groupName": "vote app staging"}
   ],
   "kustomize": {
-    "fileMatch": ["kustomization.yaml", "kustomization.yml"],
+    "managerFilePatterns": ["/kustomization.yaml/", "/kustomization.yml/"]
   }
 }
