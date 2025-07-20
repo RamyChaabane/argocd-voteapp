@@ -42,10 +42,10 @@ jobs:
               if [ -n "$PR_ID" ]; then
                 echo "No merged PR yet. Retrying in 5 seconds..."
                 sleep 5
+              else
+                echo "Found merged Renovate PR"
+                exit 0
               fi
-          
-              echo "Found merged Renovate PR: #$PR_ID"
-              exit 0
           done
 
           echo "Timeout: PR was not merged after waiting."
