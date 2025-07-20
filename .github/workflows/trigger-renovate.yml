@@ -27,7 +27,7 @@ jobs:
     needs: renovate
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.RENOVATE_PAT }}
+      GH_TOKEN: ${{ secrets.TRIGGER_PAT }}
       REPO: ${{ github.repository }}
     steps:
       - name: Wait for Renovate PR to auto-merge into dev
