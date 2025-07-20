@@ -6,7 +6,7 @@
     ":rebaseStalePrs",
     ":disableRateLimiting"
   ],
-  "baseBranchPatterns": ["main"],
+  "baseBranch": ["main"],
   "labels": ["renovate", "chore"],
   "packageRules": [
     {
