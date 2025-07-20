@@ -32,21 +32,23 @@ jobs:
     steps:
       - name: Wait for Renovate PR to auto-merge into dev
         run: |
-          echo "Looking for Renovate PR targeting 'dev' branch..."
-          
           for i in {1..60}; do
-            PR_EXISTS=$(gh pr list --repo https://github.com/"$REPO" --label "env::dev" | grep "chore(deps): update")
-            if [ $? -eq 0 ]; then
-              echo "No merged PR yet. Retrying in 5 seconds..."
-              sleep 5
-            else
-              echo "PR has been merged"
-              exit 0
-            fi
-          done
+              PR_ID=$(gh pr list \
+                --repo https://github.com/"$REPO" \
+                --label "env::dev" \
+                --json number,title \
+                --jq '.[] | select(.title | test("^chore\\(deps\\): update")) | .number')
+            
+              if [! -n "$PR_ID" ]; then
+                echo "No merged PR yet. Retrying in 5 seconds..."
+                sleep 5
+              fi
           
-          echo "Timeout: PR was not merged after waiting."
-          exit 1
+              echo "Found unmerged Renovate PR: #$PR_ID"
+          done
+
+echo "Timeout: PR was not merged after waiting."
+exit 1
 
 #  trigger-e2e:
 #    runs-on: ubuntu-latest
