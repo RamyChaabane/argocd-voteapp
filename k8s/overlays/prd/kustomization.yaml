@@ -11,10 +11,10 @@ namespace: vote-prd
 images:
   - name: backend-image
     newName: ramydockerid/vote-backend
-    newTag: 2024.07.19.1
+    newTag: 2025.07.19.87
   - name: frontend-image
     newName: ramydockerid/vote-frontend
-    newTag: 2024.07.19.1
+    newTag: 2025.07.19.87
 
 patches:
   - path: backend-replicas-patch.yaml
