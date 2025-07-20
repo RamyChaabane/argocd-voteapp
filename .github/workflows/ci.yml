@@ -1,9 +1,7 @@
 name: ci pipeline
 
 on:
-  pull_request:
-    branches:
-      - main
+  push:
 
 jobs:
   # -------------------------
