@@ -11,10 +11,10 @@ namespace: vote-dev
 images:
   - name: backend-image
     newName: ramydockerid/vote-backend
-    newTag: 2025.07.26.16542116681
+    newTag: 2025.07.26.16542220356
   - name: frontend-image
     newName: ramydockerid/vote-frontend
-    newTag: 2025.07.26.16542116681
+    newTag: 2025.07.26.16542220356
 
 patches:
   - path: ingress-patch.yaml
