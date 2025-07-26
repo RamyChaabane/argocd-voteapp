@@ -5,8 +5,22 @@ on:
     types: [trigger-renovate]
 
 jobs:
+  pre-renovate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print triggered version
+        run: echo "${{ github.event.client_payload.version }}" > version.txt
+
+      - name: Upload version artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: version-${{ github.event.client_payload.version }}
+          path: version.txt
+
   renovate:
     runs-on: ubuntu-latest
+    needs: pre-renovate
 
     steps:
       - name: Checkout
