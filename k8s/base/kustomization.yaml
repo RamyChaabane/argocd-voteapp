@@ -5,7 +5,7 @@ kind: Kustomization
 images:
   - name: redis-image
     newName: redis
-    newTag: 8.0.3
+    newTag: 8.2.1
 
 resources:
   - backend
