@@ -13,7 +13,7 @@ jobs:
         run: echo "${{ github.event.client_payload.version }}" > version.txt
 
       - name: Upload version artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: version-${{ github.event.client_payload.version }}
           path: version.txt
